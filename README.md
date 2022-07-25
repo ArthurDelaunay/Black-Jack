@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+Regles du jeu : 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    C'est un jeu de carte avec un jeu de 52 cartes.
+    Chaque carte a une valeur : 
+        2-10 => leur propre numéro
+        tetes => 10
+        as => 1 ou 11 à notre avantage
 
-## Available Scripts
+    Le but du jeu est de se rapprocher d'un total de 21 sans le dépasser et de faire plus que le croupier.
 
-In the project directory, you can run:
+    Le croupier distribue au départ 2 cartes à chaque joueur et à lui meme.
+    Le croupier doit faire un minimum de 16 pour gagner.
+    Faire 21 avec as + tete = black jack
+    black jack > 21 avec autre que as + tete
+    On peut prendre de nouvelles cartes pour faire un meilleur score sans dépasser 21.
 
-### `npm start`
+    gain:
+        Si le croupier dépasse 21 les joueurs gagnent leur mise.
+        Si le joueur est plus proche de 21 (sans le dépasser) que le croupier, il gagne sa mise.
+        Si le joueur est le croupier sont à égalité le joueur récupère sa mise (pas de perte ni de gain).
+        Si le joueur est moins proche du 21 que le croupier, il perd sa mise.
+     
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Fonctionnalités de l'App minimum : 
 
-### `npm test`
+    déroulement d'une partie : 
+        distribution (joueur et croupier)
+        calcul du score
+        choix une autre ou pas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    système de mise et de jetons : 
+        mise sur début de tour
+        ajout/retranchement des gains/pertes au compteur de jetons
 
-### `npm run build`
+    gestion du croupier ("IA") pour l'ajout de ses cartes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Fonctionnalités Bonus de l'App : 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    regles spéciales : 
 
-### `npm run eject`
+        Double : après avoir reçu les deux premières carte le joueur peut décider de doubler sa mise. Si le joueur double il reçoit une carte supplémentaire, et seulement une.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        Assurance : quand la carte visible du croupier est un As, vous pouvez choisir l’option « assurance » en échange de la moitié de votre mise (par exemple 5€ si votre mise est de 10€). Si la deuxième carte du croupier est de valeur 10 (donc si le croupier obtient un blackjack) le joueur reçoit le double de son assurance. Si ce n’est pas le cas l’assurance est perdue et la partie continue son déroulement.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+        Double : après avoir reçu les deux premières carte le joueur peut décider de doubler sa mise. Si le joueur double il reçoit une carte supplémentaire, et seulement une.
+        
+    Mode triche 
+    Animations et sons sur le croupier
+    
