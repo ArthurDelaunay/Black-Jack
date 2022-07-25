@@ -50,3 +50,6 @@ Fonctionnalités Bonus de l'App :
     Mode triche 
     Animations et sons sur le croupier
     historique de tour
+
+
+    
