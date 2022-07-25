@@ -1,6 +1,12 @@
+<<<<<<< HEAD
+import Card from './components/Card';
+import logo from './logo.svg';
+import './App.css';
+=======
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+>>>>>>> main
 
 class App extends Component {
   constructor() {
