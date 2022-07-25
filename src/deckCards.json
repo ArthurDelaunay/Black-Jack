@@ -1,0 +1,262 @@
+[
+  {
+    "cardName": "two",
+    "color": "diamond",
+    "value": 2
+  },
+  {
+    "cardName": "three",
+    "color": "diamond",
+    "value": 3
+  },
+  {
+    "cardName": "four",
+    "color": "diamond",
+    "value": 4
+  },
+  {
+    "cardName": "five",
+    "color": "diamond",
+    "value": 5
+  },
+  {
+    "cardName": "six",
+    "color": "diamond",
+    "value": 6
+  },
+  {
+    "cardName": "seven",
+    "color": "diamond",
+    "value": 7
+  },
+  {
+    "cardName": "eight",
+    "color": "diamond",
+    "value": 8
+  },
+  {
+    "cardName": "nine",
+    "color": "diamond",
+    "value": 9
+  },
+  {
+    "cardName": "ten",
+    "color": "diamond",
+    "value": 10
+  },
+  {
+    "cardName": "Jack",
+    "color": "diamond",
+    "value": 10
+  },
+  {
+    "cardName": "Queen",
+    "color": "diamond",
+    "value": 10
+  },
+  {
+    "cardName": "King",
+    "color": "diamond",
+    "value": 10
+  },
+  {
+    "cardName": "two",
+    "color": "heart",
+    "value": 2
+  },
+  {
+    "cardName": "three",
+    "color": "heart",
+    "value": 3
+  },
+  {
+    "cardName": "four",
+    "color": "heart",
+    "value": 4
+  },
+  {
+    "cardName": "five",
+    "color": "heart",
+    "value": 5
+  },
+  {
+    "cardName": "six",
+    "color": "heart",
+    "value": 6
+  },
+  {
+    "cardName": "seven",
+    "color": "heart",
+    "value": 7
+  },
+  {
+    "cardName": "eight",
+    "color": "heart",
+    "value": 8
+  },
+  {
+    "cardName": "nine",
+    "color": "heart",
+    "value": 9
+  },
+  {
+    "cardName": "ten",
+    "color": "heart",
+    "value": 10
+  },
+  {
+    "cardName": "Jack",
+    "color": "heart",
+    "value": 10
+  },
+  {
+    "cardName": "Queen",
+    "color": "heart",
+    "value": 10
+  },
+  {
+    "cardName": "King",
+    "color": "heart",
+    "value": 10
+  },
+  {
+    "cardName": "two",
+    "color": "club",
+    "value": 2
+  },
+  {
+    "cardName": "three",
+    "color": "club",
+    "value": 3
+  },
+  {
+    "cardName": "four",
+    "color": "club",
+    "value": 4
+  },
+  {
+    "cardName": "five",
+    "color": "club",
+    "value": 5
+  },
+  {
+    "cardName": "six",
+    "color": "club",
+    "value": 6
+  },
+  {
+    "cardName": "seven",
+    "color": "club",
+    "value": 7
+  },
+  {
+    "cardName": "eight",
+    "color": "club",
+    "value": 8
+  },
+  {
+    "cardName": "nine",
+    "color": "club",
+    "value": 9
+  },
+  {
+    "cardName": "ten",
+    "color": "club",
+    "value": 10
+  },
+  {
+    "cardName": "Jack",
+    "color": "club",
+    "value": 10
+  },
+  {
+    "cardName": "Queen",
+    "color": "club",
+    "value": 10
+  },
+  {
+    "cardName": "King",
+    "color": "club",
+    "value": 10
+  },
+  {
+    "cardName": "two",
+    "color": "spade",
+    "value": 2
+  },
+  {
+    "cardName": "three",
+    "color": "spade",
+    "value": 3
+  },
+  {
+    "cardName": "four",
+    "color": "spade",
+    "value": 4
+  },
+  {
+    "cardName": "five",
+    "color": "spade",
+    "value": 5
+  },
+  {
+    "cardName": "six",
+    "color": "spade",
+    "value": 6
+  },
+  {
+    "cardName": "seven",
+    "color": "spade",
+    "value": 7
+  },
+  {
+    "cardName": "eight",
+    "color": "spade",
+    "value": 8
+  },
+  {
+    "cardName": "nine",
+    "color": "spade",
+    "value": 9
+  },
+  {
+    "cardName": "ten",
+    "color": "spade",
+    "value": 10
+  },
+  {
+    "cardName": "Jack",
+    "color": "spade",
+    "value": 10
+  },
+  {
+    "cardName": "Queen",
+    "color": "spade",
+    "value": 10
+  },
+  {
+    "cardName": "King",
+    "color": "spade",
+    "value": 10
+  },
+  {
+    "cardName": "Ace",
+    "color": "spade",
+    "value": 1
+  },
+  {
+    "cardName": "Ace",
+    "color": "club",
+    "value": 1
+  },
+  {
+    "cardName": "Ace",
+    "color": "heart",
+    "value": 1
+  },
+  {
+    "cardName": "Ace",
+    "color": "diamond",
+    "value": 1
+  }
+]
