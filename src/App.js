@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -25,3 +25,4 @@ export default class App extends Component {
     )
   }
 }
+export default App
