@@ -51,4 +51,5 @@ Fonctionnalités Bonus de l'App :
     Animations et sons sur le croupier
     historique de tour
 
-test pour push
+
+    
