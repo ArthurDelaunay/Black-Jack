@@ -19,6 +19,7 @@ Regles du jeu :
         Si le joueur est plus proche de 21 (sans le dépasser) que le croupier, il gagne sa mise.
         Si le joueur est le croupier sont à égalité le joueur récupère sa mise (pas de perte ni de gain).
         Si le joueur est moins proche du 21 que le croupier, il perd sa mise.
+        si le joueur fait un blackjack le joueur gagne 1,5 fois sa mise.
      
 
 
@@ -40,7 +41,7 @@ Fonctionnalités Bonus de l'App :
 
     regles spéciales : 
 
-        Double : après avoir reçu les deux premières carte le joueur peut décider de doubler sa mise. Si le joueur double il reçoit une carte supplémentaire, et seulement une.
+        Split : Si les deux premières cartes du joueur forment une paire, il a la possibilité de les séparer en deux mains distinctes, de miser le même montant sur chacune d’elles et de les jouer séparément
 
         Assurance : quand la carte visible du croupier est un As, vous pouvez choisir l’option « assurance » en échange de la moitié de votre mise (par exemple 5€ si votre mise est de 10€). Si la deuxième carte du croupier est de valeur 10 (donc si le croupier obtient un blackjack) le joueur reçoit le double de son assurance. Si ce n’est pas le cas l’assurance est perdue et la partie continue son déroulement.
 
@@ -48,4 +49,4 @@ Fonctionnalités Bonus de l'App :
         
     Mode triche 
     Animations et sons sur le croupier
-    
+    historique de tour
