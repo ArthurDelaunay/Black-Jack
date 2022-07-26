@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+import "./reset.css"
+import "./App.css"
 
 class App extends Component {
   constructor() {
@@ -18,20 +20,30 @@ class App extends Component {
 this.setState({image : "Bienvenue dans le jeu Black Jack"})
 
   }
+reset = ()=>{
+  location.reload();
+}
+
   render() {
     return (
       <main>
-        <ul>
+        {/* <ul>
           {this.state.deck.map((card) => {
             return (
-              <li key={`${card.cardName}${card.color}`}>
-                <DeckCards />
+              <li key={`${card}${card.color}`}>
+                <DeckCards card={card} />
               </li>
-            )
+            );
           })}
-        </ul>
+        </ul> */}
+        {this.state.deck.map((card) => {
+          console.log(card.imageUrl)
+          return <img src={card.imageUrl} alt="" width={70} height={100} />
+        })}
         <h2>{this.state.image}</h2>
-        <button type="button" className="btn btn-outline-success" onClick={this.handleClickButton} >Start</button>
+        <button type="button" class="btn btn-success"onClick={this.handleClickButton}>Start</button>
+        <button type="button" class="btn btn-warning"onClick={this.reset}>Replay Game</button>
+
       </main>
     )
   }
