@@ -1,9 +1,9 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 class DeckCards extends Component {
   render() {
-    return <div>hello</div>
+    return <div></div>;
   }
 }
 
-export default DeckCards
+export default DeckCards;
