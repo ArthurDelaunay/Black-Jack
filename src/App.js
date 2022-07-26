@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+import CroupierSide from "./components/CroupierSide"
+import PlayerSide from "./components/PlayerSide"
+import _ from "lodash"
 import "./reset.css"
 import "./App.css"
 
@@ -8,8 +11,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      deck: [...deckCardsData],
-      start : ""
+      deck: _.shuffle([...deckCardsData]),
+      cardDeal: {},
+      image: ""
     }
   }
   handleClickButton = e =>{
@@ -20,13 +24,27 @@ class App extends Component {
 this.setState({image : "Bienvenue dans le jeu Black Jack"})
 
   }
-reset = ()=>{
-  location.reload();
+reset = () =>{
+  location.reload()
 }
+
+  cardDistribution = () => {
+    const clonedDeck = [...this.state.deck]
+    const cardDeal = clonedDeck.pop()
+    this.setState({
+      deck: clonedDeck,
+      cardDeal: cardDeal,
+    })
+  }
+
+  startTurn = () => {
+    this.cardDistribution(() => {})
+  }
 
   render() {
     return (
       <main>
+        <button onClick={this.startTurn}>CLick Click</button>
         {/* <ul>
           {this.state.deck.map((card) => {
             return (
@@ -36,14 +54,11 @@ reset = ()=>{
             );
           })}
         </ul> */}
-        {this.state.deck.map((card) => {
-          console.log(card.imageUrl)
+        {/* {this.state.deck.map((card) => {
           return <img src={card.imageUrl} alt="" width={70} height={100} />
-        })}
-        <h2>{this.state.image}</h2>
+        })} */}
         <button type="button" class="btn btn-success"onClick={this.handleClickButton}>Start</button>
-        <button type="button" class="btn btn-warning"onClick={this.reset}>Replay Game</button>
-
+        <button type="button" class="btn btn-warning" onClick={this.reset}>Replay Game</button>
       </main>
     )
   }
