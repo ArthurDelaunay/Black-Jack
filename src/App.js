@@ -16,15 +16,19 @@ class App extends Component {
   render() {
     return (
       <main>
-        <ul>
+        {/* <ul>
           {this.state.deck.map((card) => {
             return (
-              <li key={`${card.cardName}${card.color}`}>
-                <DeckCards />
+              <li key={`${card}${card.color}`}>
+                <DeckCards card={card} />
               </li>
-            )
+            );
           })}
-        </ul>
+        </ul> */}
+        {this.state.deck.map((card) => {
+          console.log(card.imageUrl)
+          return <img src={card.imageUrl} alt="" width={70} height={100} />
+        })}
       </main>
     )
   }

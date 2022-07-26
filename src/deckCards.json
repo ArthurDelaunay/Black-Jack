@@ -2,261 +2,313 @@
   {
     "cardName": "two",
     "color": "diamond",
-    "value": 2
+    "value": 2,
+    "imageUrl": "./assets/img/diamond_2.png"
   },
   {
     "cardName": "three",
     "color": "diamond",
-    "value": 3
+    "value": 3,
+    "imageUrl": "./assets/img/diamond_3.png"
   },
   {
     "cardName": "four",
     "color": "diamond",
-    "value": 4
+    "value": 4,
+    "imageUrl": "./assets/img/diamond_4.png"
   },
   {
     "cardName": "five",
     "color": "diamond",
-    "value": 5
+    "value": 5,
+    "imageUrl": "./assets/img/diamond_5.png"
   },
   {
     "cardName": "six",
     "color": "diamond",
-    "value": 6
+    "value": 6,
+    "imageUrl": "./assets/img/diamond_6.png"
   },
   {
     "cardName": "seven",
     "color": "diamond",
-    "value": 7
+    "value": 7,
+    "imageUrl": "./assets/img/diamond_7.png"
   },
   {
     "cardName": "eight",
     "color": "diamond",
-    "value": 8
+    "value": 8,
+    "imageUrl": "./assets/img/diamond_8.png"
   },
   {
     "cardName": "nine",
     "color": "diamond",
-    "value": 9
+    "value": 9,
+    "imageUrl": "./assets/img/diamond_9.png"
   },
   {
     "cardName": "ten",
     "color": "diamond",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/diamond_10.png"
   },
   {
     "cardName": "Jack",
     "color": "diamond",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/diamond_jack.png"
   },
   {
     "cardName": "Queen",
     "color": "diamond",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/diamond_queen.png"
   },
   {
     "cardName": "King",
     "color": "diamond",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/diamond_king.png"
   },
   {
     "cardName": "two",
     "color": "heart",
-    "value": 2
+    "value": 2,
+    "imageUrl": "./assets/img/heart_2.png"
   },
   {
     "cardName": "three",
     "color": "heart",
-    "value": 3
+    "value": 3,
+    "imageUrl": "./assets/img/heart_3.png"
   },
   {
     "cardName": "four",
     "color": "heart",
-    "value": 4
+    "value": 4,
+    "imageUrl": "./assets/img/heart_4.png"
   },
   {
     "cardName": "five",
     "color": "heart",
-    "value": 5
+    "value": 5,
+    "imageUrl": "./assets/img/heart_5.png"
   },
   {
     "cardName": "six",
     "color": "heart",
-    "value": 6
+    "value": 6,
+    "imageUrl": "./assets/img/heart_6.png"
   },
   {
     "cardName": "seven",
     "color": "heart",
-    "value": 7
+    "value": 7,
+    "imageUrl": "./assets/img/heart_7.png"
   },
   {
     "cardName": "eight",
     "color": "heart",
-    "value": 8
+    "value": 8,
+    "imageUrl": "./assets/img/heart_8.png"
   },
   {
     "cardName": "nine",
     "color": "heart",
-    "value": 9
+    "value": 9,
+    "imageUrl": "./assets/img/heart_9.png"
   },
   {
     "cardName": "ten",
     "color": "heart",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/heart_10.png"
   },
   {
     "cardName": "Jack",
     "color": "heart",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/heart_jack.png"
   },
   {
     "cardName": "Queen",
     "color": "heart",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/heart_queen.png"
   },
   {
     "cardName": "King",
     "color": "heart",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/heart_king.png"
   },
   {
     "cardName": "two",
     "color": "club",
-    "value": 2
+    "value": 2,
+    "imageUrl": "./assets/img/club_2.png"
   },
   {
     "cardName": "three",
     "color": "club",
-    "value": 3
+    "value": 3,
+    "imageUrl": "./assets/img/club_3.png"
   },
   {
     "cardName": "four",
     "color": "club",
-    "value": 4
+    "value": 4,
+    "imageUrl": "./assets/img/club_4.png"
   },
   {
     "cardName": "five",
     "color": "club",
-    "value": 5
+    "value": 5,
+    "imageUrl": "./assets/img/club_5.png"
   },
   {
     "cardName": "six",
     "color": "club",
-    "value": 6
+    "value": 6,
+    "imageUrl": "./assets/img/club_6.png"
   },
   {
     "cardName": "seven",
     "color": "club",
-    "value": 7
+    "value": 7,
+    "imageUrl": "./assets/img/club_7.png"
   },
   {
     "cardName": "eight",
     "color": "club",
-    "value": 8
+    "value": 8,
+    "imageUrl": "./assets/img/club_8.png"
   },
   {
     "cardName": "nine",
     "color": "club",
-    "value": 9
+    "value": 9,
+    "imageUrl": "./assets/img/club_9.png"
   },
   {
     "cardName": "ten",
     "color": "club",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/club_10.png"
   },
   {
     "cardName": "Jack",
     "color": "club",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/club_jack.png"
   },
   {
     "cardName": "Queen",
     "color": "club",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/club_queen.png"
   },
   {
     "cardName": "King",
     "color": "club",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/club_king.png"
   },
   {
     "cardName": "two",
     "color": "spade",
-    "value": 2
+    "value": 2,
+    "imageUrl": "./assets/img/spade_2.png"
   },
   {
     "cardName": "three",
     "color": "spade",
-    "value": 3
+    "value": 3,
+    "imageUrl": "./assets/img/spade_3.png"
   },
   {
     "cardName": "four",
     "color": "spade",
-    "value": 4
+    "value": 4,
+    "imageUrl": "./assets/img/spade_4.png"
   },
   {
     "cardName": "five",
     "color": "spade",
-    "value": 5
+    "value": 5,
+    "imageUrl": "./assets/img/spade_5.png"
   },
   {
     "cardName": "six",
     "color": "spade",
-    "value": 6
+    "value": 6,
+    "imageUrl": "./assets/img/spade_6.png"
   },
   {
     "cardName": "seven",
     "color": "spade",
-    "value": 7
+    "value": 7,
+    "imageUrl": "./assets/img/spade_7.png"
   },
   {
     "cardName": "eight",
     "color": "spade",
-    "value": 8
+    "value": 8,
+    "imageUrl": "./assets/img/spade_8.png"
   },
   {
     "cardName": "nine",
     "color": "spade",
-    "value": 9
+    "value": 9,
+    "imageUrl": "./assets/img/spade_9.png"
   },
   {
     "cardName": "ten",
     "color": "spade",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/spade_10.png"
   },
   {
     "cardName": "Jack",
     "color": "spade",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/spade_jack.png"
   },
   {
     "cardName": "Queen",
     "color": "spade",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/spade_queen.png"
   },
   {
     "cardName": "King",
     "color": "spade",
-    "value": 10
+    "value": 10,
+    "imageUrl": "./assets/img/spade_king.png"
   },
   {
     "cardName": "Ace",
     "color": "spade",
-    "value": 1
+    "value": 1,
+    "imageUrl": "./assets/img/spade_1.png"
   },
   {
     "cardName": "Ace",
     "color": "club",
-    "value": 1
+    "value": 1,
+    "imageUrl": "./assets/img/club_1.png"
   },
   {
     "cardName": "Ace",
     "color": "heart",
-    "value": 1
+    "value": 1,
+    "imageUrl": "./assets/img/heart_1.png"
   },
   {
     "cardName": "Ace",
     "color": "diamond",
-    "value": 1
+    "value": 1,
+    "imageUrl": "./assets/img/diamond_1.png"
   }
 ]
