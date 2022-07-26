@@ -7,18 +7,16 @@ class App extends Component {
     super()
     this.state = {
       deck: [...deckCardsData],
+      start : ""
     }
   }
-  handleClickButton = () =>{
-    const max = 2
-    const min = 1
-   const random = Math.floor(Math.random() * max) + min
-if(random === min ){
-console.log("voici tes deux cartes IA")
-}
-else{
-  console.log("Prend les tiens joueur");
-}
+  handleClickButton = e =>{
+
+    // const max = ?
+    // const min = ?
+  //  const random = Math.floor(Math.random() * max) + min
+this.setState({image : "Bienvenue dans le jeu Black Jack"})
+
   }
   render() {
     return (
@@ -32,7 +30,8 @@ else{
             )
           })}
         </ul>
-        <button type="button" class="btn btn-outline-success" onClick={this.handleClickButton}>Start</button>
+        <h2>{this.state.image}</h2>
+        <button type="button" className="btn btn-outline-success" onClick={this.handleClickButton} >Start</button>
       </main>
     )
   }
