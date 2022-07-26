@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import DeckCards from "./components/DeckCards";
-import deckCardsData from "./deckCards.json";
-import "./App.css";
+import React, { Component } from "react"
+import DeckCards from "./components/DeckCards"
+import deckCardsData from "./deckCards.json"
+import "./App.css"
 
 class App extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       deck: [...deckCardsData],
-    };
+    }
   }
   render() {
     return (
@@ -23,11 +23,11 @@ class App extends Component {
           })}
         </ul> */}
         {this.state.deck.map((card) => {
-          console.log(card.imageUrl);
-          return <img src={card.imageUrl} alt="" width={70} height={100} />;
+          console.log(card.imageUrl)
+          return <img src={card.imageUrl} alt="" width={70} height={100} />
         })}
       </main>
-    );
+    )
   }
 }
-export default App;
+export default App
