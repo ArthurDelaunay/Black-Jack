@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+import "./reset.css"
 import "./App.css"
 
 class App extends Component {
@@ -10,6 +11,8 @@ class App extends Component {
       deck: [...deckCardsData],
     }
   }
+
+
   render() {
     return (
       <main>
