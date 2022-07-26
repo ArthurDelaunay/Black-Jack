@@ -23,6 +23,7 @@ class App extends Component {
   //  const random = Math.floor(Math.random() * max) + min
 this.setState({image : "Bienvenue dans le jeu Black Jack"})
 
+
 }
 handleReset = () =>{
   window.location.reload()
