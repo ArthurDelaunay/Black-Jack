@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+import CroupierSide from "./components/CroupierSide"
+import PlayerSide from "./components/PlayerSide"
+import _ from "lodash"
 import "./reset.css"
 import "./App.css"
 
@@ -8,14 +11,29 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      deck: [...deckCardsData],
+      deck: _.shuffle([...deckCardsData]),
+      cardDeal: {},
     }
   }
 
 
+  cardDistribution = () => {
+    const clonedDeck = [...this.state.deck]
+    const cardDeal = clonedDeck.pop()
+    this.setState({
+      deck: clonedDeck,
+      cardDeal: cardDeal,
+    })
+  }
+
+  startTurn = () => {
+    this.cardDistribution(() => {})
+  }
+
   render() {
     return (
       <main>
+        <button onClick={this.startTurn}>CLick Click</button>
         {/* <ul>
           {this.state.deck.map((card) => {
             return (
@@ -25,10 +43,9 @@ class App extends Component {
             );
           })}
         </ul> */}
-        {this.state.deck.map((card) => {
-          console.log(card.imageUrl)
+        {/* {this.state.deck.map((card) => {
           return <img src={card.imageUrl} alt="" width={70} height={100} />
-        })}
+        })} */}
       </main>
     )
   }
