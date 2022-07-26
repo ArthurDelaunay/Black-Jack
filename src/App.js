@@ -23,9 +23,9 @@ class App extends Component {
   //  const random = Math.floor(Math.random() * max) + min
 this.setState({image : "Bienvenue dans le jeu Black Jack"})
 
-  }
-reset = () =>{
-  location.reload()
+}
+handleReset = () =>{
+  window.location.reload()
 }
 
   cardDistribution = () => {
@@ -44,6 +44,7 @@ reset = () =>{
   render() {
     return (
       <main>
+        <h2>{this.state.image}</h2>
         <button onClick={this.startTurn}>CLick Click</button>
         {/* <ul>
           {this.state.deck.map((card) => {
@@ -57,8 +58,8 @@ reset = () =>{
         {/* {this.state.deck.map((card) => {
           return <img src={card.imageUrl} alt="" width={70} height={100} />
         })} */}
-        <button type="button" class="btn btn-success"onClick={this.handleClickButton}>Start</button>
-        <button type="button" class="btn btn-warning" onClick={this.reset}>Replay Game</button>
+        <button type="button" className="button1"onClick={this.handleClickButton}>Start</button>
+        <button type="button" className="button2" onClick={this.handleReset}>Replay Game</button>
       </main>
     )
   }
