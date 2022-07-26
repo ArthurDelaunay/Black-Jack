@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import Card from "./components/Card"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+import "./reset.css"
 import "./App.css"
 
 class App extends Component {
@@ -16,7 +16,6 @@ class App extends Component {
   render() {
     return (
       <main>
-        <Card />
         <ul>
           {this.state.deck.map((card) => {
             return (
