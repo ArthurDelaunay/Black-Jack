@@ -36,6 +36,8 @@ class App extends Component {
 
       if (index >= 0) {
         clonePlayerHand[index].value = 1
+      } else {
+        alert("player has lost")
       }
     }
 
@@ -85,9 +87,16 @@ class App extends Component {
     return sum
   }
   stand = async () => {
-    if (this.state.resultCroupier < this.state.resultPlayer) {
+    if (
+      this.state.resultCroupier < this.state.resultPlayer ||
+      this.state.resultCroupier < 16
+    ) {
       await this.cardDistributionCroupier()
       this.stand()
+    } else if (this.state.resultCroupier > 21) {
+      alert("Ia Lost")
+    } else {
+      alert("Ia Win")
     }
   }
 
