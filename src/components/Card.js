@@ -4,7 +4,12 @@ class Card extends Component {
 
   render() {
     return (
-      <div>Card</div>
+      <>
+      <div>
+      
+
+      </div>
+      </>
     )
   }
 }
