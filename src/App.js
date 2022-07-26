@@ -1,7 +1,10 @@
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+<<<<<<< HEAD
 import Card from "./components/Card"
+=======
+>>>>>>> main
 
 class App extends Component {
   constructor() {
