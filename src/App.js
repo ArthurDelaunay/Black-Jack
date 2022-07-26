@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import Card from './components/Card';
-import logo from './logo.svg';
-import './App.css';
-=======
 import React, { Component } from "react"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
->>>>>>> main
+import Card from "./components/Card"
 
 class App extends Component {
   constructor() {
@@ -15,6 +10,14 @@ class App extends Component {
       deck: [...deckCardsData],
     }
   }
+
+
+  
+
+  // handleBlackJack = () => {
+    
+  // }
+
   render() {
     return (
       <main>
