@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Card from "./components/Card"
 import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
+import "./App.css"
 
 class App extends Component {
   constructor() {
