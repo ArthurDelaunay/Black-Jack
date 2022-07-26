@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import DeckCards from "./components/DeckCards"
+// import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
 import "./App.css"
+import PlayerSide from "./components/PlayerSide"
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends Component {
     }
   }
   render() {
+    console.log(this)
     return (
       <main>
         {/* <ul>
@@ -26,6 +28,8 @@ class App extends Component {
           console.log(card.imageUrl)
           return <img src={card.imageUrl} alt="" width={70} height={100} />
         })}
+
+        <PlayerSide cards={this.state.deck} />
       </main>
     )
   }

@@ -2,7 +2,8 @@ import React, { Component } from "react"
 
 class PlayerSide extends Component {
   render() {
-    return <div>PlayerSide</div>
+    console.log(this)
+    return <div></div>
   }
 }
 
