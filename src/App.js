@@ -21,21 +21,24 @@ class App extends Component {
     }
   }
 
-  cardDistribution = () => {
+  cardDistributionPlayer = () => {
     const clonedDeck = [...this.state.deck]
     const cardDeal = clonedDeck.pop()
 
     const clonePlayerHand = [...this.state.playerHand, cardDeal]
+
     const result = this.sumOfCards(clonePlayerHand)
+
     if (result > 21) {
       const index = clonePlayerHand.findIndex((card) => {
         return card.value === 11
       })
-      console.log(index)
+
       if (index >= 0) {
         clonePlayerHand[index].value = 1
       }
     }
+
     this.setState({
       deck: clonedDeck,
       playerHand: clonePlayerHand,
@@ -43,22 +46,33 @@ class App extends Component {
     })
   }
 
-  startTurn = () => {
-    this.cardDistribution()
-  }
-  // playerHand = () => {
-  //   this.cardDistribution()
-  //   const clonedPlayerHand = [...this.state.playerHand, this.state.cardDeal]
-  //   // console.log(clonedPlayerHand)
+  cardDistributionCroupier = () => {
+    const clonedDeck = [...this.state.deck]
+    const cardDeal = clonedDeck.pop()
 
-  //   this.setState({
-  //     playerHand: clonedPlayerHand,
-  //   })
-  // }
+    const cloneCroupierHand = [...this.state.croupierHand, cardDeal]
+
+    const result = this.sumOfCards(cloneCroupierHand)
+    if (result > 21) {
+      const index = cloneCroupierHand.findIndex((card) => {
+        return card.value === 11
+      })
+
+      if (index >= 0) {
+        cloneCroupierHand[index].value = 1
+      }
+    }
+
+    this.setState({
+      deck: clonedDeck,
+      croupierHand: cloneCroupierHand,
+      resultCroupier: this.sumOfCards(cloneCroupierHand),
+    })
+  }
+
   croupierHand = () => {
     this.cardDistribution()
     const clonedCroupierHand = [...this.state.croupierHand, this.state.cardDeal]
-    // console.log(clonedCroupierHand)
     this.setState({
       croupierHand: clonedCroupierHand,
     })
@@ -70,12 +84,26 @@ class App extends Component {
     })
     return sum
   }
+  stand = async () => {
+    if (this.state.resultCroupier < this.state.resultPlayer) {
+      await this.cardDistributionCroupier()
+      this.stand()
+    }
+  }
 
+  startTurn = async () => {
+    await this.cardDistributionPlayer()
+    await this.cardDistributionPlayer()
+    await this.cardDistributionCroupier()
+    await this.cardDistributionCroupier()
+  }
   render() {
     console.log(this.state)
     return (
       <main>
         <button onClick={this.startTurn}>Teste</button>
+        <button onClick={this.stand}>Stand</button>
+        <button onClick={this.cardDistributionPlayer}>Hit</button>
         {/* <button onClick={this.sumOfCardsPlayer}>Teste</button> */}
 
         {/* <ul>
