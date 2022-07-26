@@ -1,19 +1,13 @@
-<<<<<<< HEAD
-import Card from './components/Card';
-import logo from './logo.svg';
-import './App.css';
-=======
-import React, { Component } from "react"
-import DeckCards from "./components/DeckCards"
-import deckCardsData from "./deckCards.json"
->>>>>>> main
+import React, { Component } from "react";
+import DeckCards from "./components/DeckCards";
+import deckCardsData from "./deckCards.json";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       deck: [...deckCardsData],
-    }
+    };
   }
   render() {
     return (
@@ -24,11 +18,11 @@ class App extends Component {
               <li key={`${card.cardName}${card.color}`}>
                 <DeckCards />
               </li>
-            )
+            );
           })}
         </ul>
       </main>
-    )
+    );
   }
 }
-export default App
+export default App;
