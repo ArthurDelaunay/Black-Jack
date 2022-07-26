@@ -1,11 +1,12 @@
 import React, { Component } from "react"
-import DeckCards from "./components/DeckCards"
+// import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
 import CroupierSide from "./components/CroupierSide"
-import PlayerSide from "./components/PlayerSide"
+
 import _ from "lodash"
 import "./reset.css"
 import "./App.css"
+import PlayerSide from "./components/PlayerSide"
 
 class App extends Component {
   constructor() {
@@ -13,40 +14,108 @@ class App extends Component {
     this.state = {
       deck: _.shuffle([...deckCardsData]),
       cardDeal: {},
-      image: ""
+      playerHand: [],
+      croupierHand: [],
+      resultPlayer: 0,
+      resultCroupier: 0,
     }
   }
-  handleClickButton = e =>{
-
-    // const max = ?
-    // const min = ?
-  //  const random = Math.floor(Math.random() * max) + min
-this.setState({image : "Bienvenue dans le jeu Black Jack"})
 
 
-}
-handleReset = () =>{
-  window.location.reload()
-}
-
-  cardDistribution = () => {
+  cardDistributionPlayer = () => {
     const clonedDeck = [...this.state.deck]
     const cardDeal = clonedDeck.pop()
+
+    const clonePlayerHand = [...this.state.playerHand, cardDeal]
+
+    const result = this.sumOfCards(clonePlayerHand)
+
+    if (result > 21) {
+      const index = clonePlayerHand.findIndex((card) => {
+        return card.value === 11
+      })
+
+      if (index >= 0) {
+        clonePlayerHand[index].value = 1
+      } else {
+        alert("player has lost")
+      }
+    }
+
     this.setState({
       deck: clonedDeck,
-      cardDeal: cardDeal,
+      playerHand: clonePlayerHand,
+      resultPlayer: this.sumOfCards(clonePlayerHand),
     })
   }
 
-  startTurn = () => {
-    this.cardDistribution(() => {})
+  cardDistributionCroupier = () => {
+    const clonedDeck = [...this.state.deck]
+    const cardDeal = clonedDeck.pop()
+
+    const cloneCroupierHand = [...this.state.croupierHand, cardDeal]
+
+    const result = this.sumOfCards(cloneCroupierHand)
+    if (result > 21) {
+      const index = cloneCroupierHand.findIndex((card) => {
+        return card.value === 11
+      })
+
+      if (index >= 0) {
+        cloneCroupierHand[index].value = 1
+      }
+    }
+
+    this.setState({
+      deck: clonedDeck,
+      croupierHand: cloneCroupierHand,
+      resultCroupier: this.sumOfCards(cloneCroupierHand),
+    })
   }
 
+  croupierHand = () => {
+    this.cardDistribution()
+    const clonedCroupierHand = [...this.state.croupierHand, this.state.cardDeal]
+    this.setState({
+      croupierHand: clonedCroupierHand,
+    })
+  }
+  sumOfCards = (cards) => {
+    let sum = 0
+    cards.forEach((card) => {
+      sum = sum + card.value
+    })
+    return sum
+  }
+  stand = async () => {
+    if (
+      this.state.resultCroupier < this.state.resultPlayer ||
+      this.state.resultCroupier < 16
+    ) {
+      await this.cardDistributionCroupier()
+      this.stand()
+    } else if (this.state.resultCroupier > 21) {
+      alert("Ia Lost")
+    } else {
+      alert("Ia Win")
+    }
+  }
+
+  startTurn = async () => {
+    await this.cardDistributionPlayer()
+    await this.cardDistributionPlayer()
+    await this.cardDistributionCroupier()
+    await this.cardDistributionCroupier()
+  }
   render() {
+    console.log(this.state)
     return (
       <main>
-        <h2>{this.state.image}</h2>
-        <button onClick={this.startTurn}>CLick Click</button>
+        <button onClick={this.startTurn}>Teste</button>
+        <button onClick={this.stand}>Stand</button>
+        <button onClick={this.cardDistributionPlayer}>Hit</button>
+        {/* <button onClick={this.sumOfCardsPlayer}>Teste</button> */}
+
         {/* <ul>
           {this.state.deck.map((card) => {
             return (

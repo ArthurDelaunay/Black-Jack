@@ -1,8 +1,11 @@
 main {
-    background: url(../public/background/bg.png) no-repeat center center fixed;
-    background-size: 100% 100%;
-    color: white;
+  background: url(../public/background/bg.png) no-repeat center/cover fixed;
+  background-size: 100% 100%;
+  color: white;
+  height: 100vh;
+  width: 100%;
 }
+<<<<<<< HEAD
 .button2{
    
     gap: 10px;
@@ -13,3 +16,5 @@ main {
     margin-left: 20px;
 }
 
+=======
+>>>>>>> main

@@ -290,25 +290,25 @@
   {
     "cardName": "Ace",
     "color": "spade",
-    "value": 1,
+    "value": 11,
     "imageUrl": "./assets/img/spade_1.png"
   },
   {
     "cardName": "Ace",
     "color": "club",
-    "value": 1,
+    "value": 11,
     "imageUrl": "./assets/img/club_1.png"
   },
   {
     "cardName": "Ace",
     "color": "heart",
-    "value": 1,
+    "value": 11,
     "imageUrl": "./assets/img/heart_1.png"
   },
   {
     "cardName": "Ace",
     "color": "diamond",
-    "value": 1,
+    "value": 11,
     "imageUrl": "./assets/img/diamond_1.png"
   }
 ]
