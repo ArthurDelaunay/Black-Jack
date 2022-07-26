@@ -4,6 +4,7 @@ import deckCardsData from "./deckCards.json"
 import CroupierSide from "./components/CroupierSide"
 import PlayerSide from "./components/PlayerSide"
 import _ from "lodash"
+import "./reset.css"
 import "./App.css"
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
       cardDeal: {},
     }
   }
+
 
   cardDistribution = () => {
     const clonedDeck = [...this.state.deck]
