@@ -296,7 +296,7 @@ class App extends Component {
 
           <div className="playmenu" style={{display: 'flex'}}>
             <button onClick={this.addToPlayerHand} className="menubutton">Hit</button>
-            <button onClick={this.startTurn} className="menubutton">Restart</button>
+            <button onClick={this.startTurn} className="menubutton">Play</button>
             <button onClick={this.stand} className="menubutton">Stand</button>
           </div>
           
