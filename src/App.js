@@ -22,6 +22,8 @@ class App extends Component {
       winner: "",
       whosTurn: "player",
       gameStatus: "distribution",
+      jeton: 100,
+      jetonBet: 0
     }
   }
   componentDidUpdate(prevProps, prevState) {
