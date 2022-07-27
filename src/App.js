@@ -22,6 +22,9 @@ class App extends Component {
       winner: "",
       whosTurn: "player",
       gameStatus: "distribution",
+      betOfCroupier: 0,
+      betOfPlayer: 0
+
     }
   }
   componentDidUpdate(prevProps, prevState) {
@@ -225,15 +228,21 @@ class App extends Component {
     if (this.state.resultPlayer > this.state.resultCroupier) {
       this.setState({
         winner: "player",
+        
       })
+    
     } else if (this.state.resultPlayer < this.state.resultCroupier) {
       this.setState({
         winner: "croupier",
+        
       })
+     
     } else {
       this.setState({
         winner: "draw",
+        
       })
+     
     }
   }
 
@@ -257,6 +266,7 @@ class App extends Component {
     })
 
   }
+ 
   render() {
     console.log(this.state)
     return (
