@@ -13,20 +13,7 @@ class App extends Component {
     this.state = {
       deck: _.shuffle([...deckCardsData]),
       cardDeal: {},
-      playerHand: [
-        {
-          cardName: "four",
-          color: "diamond",
-          value: 4,
-          imageUrl: "./assets/img/diamond_4.png",
-        },
-        {
-          cardName: "four",
-          color: "diamond",
-          value: 4,
-          imageUrl: "./assets/img/diamond_4.png",
-        },
-      ],
+      playerHand: [],
       croupierHand: [],
       resultPlayer: 0,
       resultCroupier: 0,
@@ -208,47 +195,47 @@ class App extends Component {
     })
   }
 
-  changeAceValueForCroupier = () => {
-    if (this.state.resultCroupier > 21) {
-      const index = this.state.croupierHand.findIndex((card) => {
-        return card.value === 11
-      })
+  // changeAceValueForCroupier = () => {
+  //   if (this.state.resultCroupier > 21) {
+  //     const index = this.state.croupierHand.findIndex((card) => {
+  //       return card.value === 11
+  //     })
 
-      if (index >= 0) {
-        const cloneCroupierHand = [...this.state.croupierHand]
-        cloneCroupierHand[index].value = 1
+  //     if (index >= 0) {
+  //       const cloneCroupierHand = [...this.state.croupierHand]
+  //       cloneCroupierHand[index].value = 1
 
-        this.setState({
-          croupierHand: cloneCroupierHand,
-        })
-      }
-    }
-  }
-  toCroupierTurn = () => {
-    this.setState({
-      whosTurn: "croupier",
-    })
-  }
-  toPlayerTurn = () => {
-    this.setState({
-      whosTurn: "player",
-    })
-  }
-  whoWin = () => {
-    if (this.state.resultPlayer > this.state.resultCroupier) {
-      this.setState({
-        winner: "player",
-      })
-    } else if (this.state.resultPlayer < this.state.resultCroupier) {
-      this.setState({
-        winner: "croupier",
-      })
-    } else {
-      this.setState({
-        winner: "draw",
-      })
-    }
-  }
+  //       this.setState({
+  //         croupierHand: cloneCroupierHand,
+  //       })
+  //     }
+  //   }
+  // }
+  // toCroupierTurn = () => {
+  //   this.setState({
+  //     whosTurn: "croupier",
+  //   })
+  // }
+  // toPlayerTurn = () => {
+  //   this.setState({
+  //     whosTurn: "player",
+  //   })
+  // }
+  // whoWin = () => {
+  //   if (this.state.resultPlayer > this.state.resultCroupier) {
+  //     this.setState({
+  //       winner: "player",
+  //     })
+  //   } else if (this.state.resultPlayer < this.state.resultCroupier) {
+  //     this.setState({
+  //       winner: "croupier",
+  //     })
+  //   } else {
+  //     this.setState({
+  //       winner: "draw",
+  //     })
+  //   }
+  // }
 
   // handleJetonPlus = () => {
   //   if (this.state.jeton > 0) {
@@ -281,6 +268,7 @@ class App extends Component {
   startTurn = () => {
     this.pickUpCard()
   }
+
   render() {
     return (
       <main className="flex flex-column">
@@ -292,7 +280,12 @@ class App extends Component {
           hand={this.state.playerHand}
           score={this.state.resultPlayer}
         />
-        <Buttons />
+
+        <Buttons
+          stand={this.stand}
+          hit={this.addToPlayerHand}
+          play={this.startTurn}
+        />
       </main>
     )
   }
