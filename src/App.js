@@ -264,7 +264,7 @@ class App extends Component {
         <button onClick={this.startTurn}>Start</button>
         <button onClick={this.stand}>Stand</button>
         <button onClick={this.cardDistributionPlayer}>Hit</button>
-        <button onClick={this.resetFunction}>Recommencer</button>
+        <button onClick={this.resetFunction}>Replay</button>
 
         <button onClick={this.addToPlayerHand}>Hit</button>
         {/* <button onClick={this.sumOfCardsPlayer}>Teste</button> */}
