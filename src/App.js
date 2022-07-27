@@ -106,6 +106,17 @@ class App extends Component {
     await this.cardDistributionCroupier()
     await this.cardDistributionCroupier()
   }
+  resetFunction = () =>{
+    this.setState({
+      cardDeal: {},
+      playerHand: [],
+      croupierHand: [],
+      resultPlayer: 0,
+      resultCroupier: 0,
+
+    })
+
+  }
   render() {
     console.log(this.state)
     return (
@@ -113,6 +124,8 @@ class App extends Component {
         <button onClick={this.startTurn}>Teste</button>
         <button onClick={this.stand}>Stand</button>
         <button onClick={this.cardDistributionPlayer}>Hit</button>
+        <button onClick={this.resetFunction}>Recommencer</button>
+
         {/* <button onClick={this.sumOfCardsPlayer}>Teste</button> */}
 
         {/* <ul>
