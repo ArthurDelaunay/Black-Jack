@@ -19,7 +19,7 @@ class App extends Component {
       resultCroupier: 0,
       winner: "",
       whosTurn: "player",
-      gameStatus: "distribution",
+      gameStatus: "",
       jeton: 100,
       jetonBet: 0,
     }
@@ -27,6 +27,11 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.winner !== "") {
       return
+    }
+    if (this.state.deck.length === 0) {
+      this.setState({
+        deck: _.shuffle([...deckCardsData]),
+      })
     }
     // Distribution
     if (this.state.gameStatus === "distribution") {
@@ -266,7 +271,13 @@ class App extends Component {
   }
 
   startTurn = () => {
-    this.pickUpCard()
+    this.handleGameStatus()
+  }
+
+  handleGameStatus = () => {
+    this.setState({
+      gameStatus: "distribution"
+    })
   }
   resetFunction = () =>{
     this.setState({
@@ -275,7 +286,8 @@ class App extends Component {
       croupierHand: [],
       resultPlayer: 0,
       resultCroupier: 0,
-
+      winner: "",
+      gameStatus: ""
     })
 
   }
@@ -296,6 +308,9 @@ class App extends Component {
           stand={this.stand}
           hit={this.addToPlayerHand}
           play={this.startTurn}
+          status={this.state.gameStatus}
+          winner={this.state.winner}
+          reset={this.resetFunction}
         />
       </main>
     )
