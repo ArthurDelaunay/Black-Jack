@@ -274,7 +274,18 @@ class App extends Component {
       gameStatus: "distribution"
     })
   }
+  resetFunction = () =>{
+    this.setState({
+      cardDeal: {},
+      playerHand: [],
+      croupierHand: [],
+      resultPlayer: 0,
+      resultCroupier: 0,
 
+    })
+
+  }
+ 
   render() {
     return (
       <main className="flex flex-column">
