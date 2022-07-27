@@ -20,8 +20,8 @@ class App extends Component {
       winner: "",
       whosTurn: "player",
       gameStatus: "",
-      jeton: 100,
-      jetonBet: 0,
+      tokens: 100,
+      tokensBet: 0,
     }
   }
   componentDidUpdate(prevProps, prevState) {
@@ -32,6 +32,12 @@ class App extends Component {
       this.setState({
         deck: _.shuffle([...deckCardsData]),
       })
+    }
+    // Bet
+    if (this.state.gameStatus === "bet") {
+      if (this.state.tokensBet > 0) {
+        
+      }
     }
     // Distribution
     if (this.state.gameStatus === "distribution") {
@@ -200,69 +206,32 @@ class App extends Component {
     })
   }
 
-  // changeAceValueForCroupier = () => {
-  //   if (this.state.resultCroupier > 21) {
-  //     const index = this.state.croupierHand.findIndex((card) => {
-  //       return card.value === 11
-  //     })
+  startDistribution = () => {
+    if (this.state.tokensBet > 0) {
+      this.setState({
+        gameStatus: "distribution"
+      })
+    } else {
+      alert('Bet some tokens PLEASE')
+    }
+  }
 
-  //     if (index >= 0) {
-  //       const cloneCroupierHand = [...this.state.croupierHand]
-  //       cloneCroupierHand[index].value = 1
+  
+  handleTokenPlus = () => {
+    if (this.state.tokens >= 10 && this.state.tokens > this.state.tokensBet) {
+      this.setState({
+        tokensBet: this.state.tokensBet + 10
+      })
+    }
+  }
 
-  //       this.setState({
-  //         croupierHand: cloneCroupierHand,
-  //       })
-  //     }
-  //   }
-  // }
-  // toCroupierTurn = () => {
-  //   this.setState({
-  //     whosTurn: "croupier",
-  //   })
-  // }
-  // toPlayerTurn = () => {
-  //   this.setState({
-  //     whosTurn: "player",
-  //   })
-  // }
-  // whoWin = () => {
-  //   if (this.state.resultPlayer > this.state.resultCroupier) {
-  //     this.setState({
-  //       winner: "player",
-  //     })
-  //   } else if (this.state.resultPlayer < this.state.resultCroupier) {
-  //     this.setState({
-  //       winner: "croupier",
-  //     })
-  //   } else {
-  //     this.setState({
-  //       winner: "draw",
-  //     })
-  //   }
-  // }
-
-  // handleJetonPlus = () => {
-  //   if (this.state.jeton > 0) {
-  //     this.setState({
-  //       jeton: this.state.jeton - 10,
-  //       jetonBet: this.state.jetonBet + 10
-  //     })
-  //   } else {
-  //     alert("You haven't jetons")
-  //   }
-  // }
-
-  // handleJetonMinus = () => {
-  //   if (this.state.jetonBet > 0) {
-  //     this.setState({
-  //       jetonBet: this.state.jetonBet - 10,
-  //       jeton: this.state.jeton + 10
-  //     })
-  //   } else {
-  //     alert("No more jetons")
-  //   }
-  // }
+  handleTokenMinus = () => {
+    if (this.state.tokensBet >= 10) {
+      this.setState({
+        tokensBet: this.state.tokensBet - 10
+      })
+    }
+  }
 
   stand = () => {
     this.setState({
@@ -276,9 +245,11 @@ class App extends Component {
 
   handleGameStatus = () => {
     this.setState({
-      gameStatus: "distribution"
+      gameStatus: "bet"
     })
   }
+
+
   resetFunction = () =>{
     this.setState({
       cardDeal: {},
@@ -311,6 +282,11 @@ class App extends Component {
           status={this.state.gameStatus}
           winner={this.state.winner}
           reset={this.resetFunction}
+          tokens={this.state.tokens}
+          bet={this.state.tokensBet}
+          plusTen={this.handleTokenPlus}
+          minusTen={this.handleTokenMinus}
+          checkBet={this.startDistribution}
         />
       </main>
     )
