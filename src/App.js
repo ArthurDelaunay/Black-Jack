@@ -18,6 +18,8 @@ class App extends Component {
       croupierHand: [],
       resultPlayer: 0,
       resultCroupier: 0,
+      jeton: 100,
+      jetonBet: 0
     }
   }
 
@@ -100,6 +102,29 @@ class App extends Component {
     }
   }
 
+  handleJetonPlus = () => {
+    if (this.state.jeton > 0) {
+      this.setState({
+        jeton: this.state.jeton - 10,
+        jetonBet: this.state.jetonBet + 10
+      })
+    } else {
+      alert("You haven't jetons")
+    }
+  }
+  
+  handleJetonMinus = () => {
+    if (this.state.jetonBet > 0) {
+      this.setState({
+        jetonBet: this.state.jetonBet - 10,
+        jeton: this.state.jeton + 10
+      })
+    } else {
+      alert("No more jetons")
+    }
+  }
+
+  
   startTurn = async () => {
     await this.cardDistributionPlayer()
     await this.cardDistributionPlayer()
@@ -110,9 +135,33 @@ class App extends Component {
     console.log(this.state)
     return (
       <main>
-        <button onClick={this.startTurn}>Teste</button>
-        <button onClick={this.stand}>Stand</button>
-        <button onClick={this.cardDistributionPlayer}>Hit</button>
+
+
+        <div className="croupier_card"></div>
+
+        <div className="player_card"></div>
+
+        <div className="jetons">
+            {this.state.jeton}
+        </div>
+
+        <div className="downmenu">
+
+          <div className="betmenu" style={{display: 'none'}}>
+            <button onClick={this.handleJetonMinus} className="menubutton">-10</button>
+            <button onClick={this.startTurn} className="menubutton">Play</button>
+            <button onClick={this.handleJetonPlus} className="menubutton">+10</button>
+          </div>
+
+          <div className="playmenu" style={{display: 'flex'}}>
+            <button onClick={this.cardDistributionPlayer} className="menubutton">Hit</button>
+            <button onClick={this.startTurn} className="menubutton">Restart</button>
+            <button onClick={this.stand} className="menubutton">Stand</button>
+          </div>
+          
+        </div>
+
+        <span>You bet {this.state.jetonBet}</span>
         {/* <button onClick={this.sumOfCardsPlayer}>Teste</button> */}
 
         {/* <ul>

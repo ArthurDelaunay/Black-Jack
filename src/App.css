@@ -5,3 +5,73 @@ main {
   height: 100vh;
   width: 100%;
 }
+
+
+.downmenu {
+  background: url(../public/background/downmenu.png) no-repeat;
+  width: 756px;
+  height: 135px;
+  display: flex;
+  position: absolute;
+  right: 50vh;
+  bottom: 0vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menubutton {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 61px;
+  height: 70px;
+  width: 200px;
+  color: white;
+  font-size: 35px;
+  border: none;
+  cursor: pointer;
+}
+
+.menubutton:hover {
+  background: rgba(126, 126, 126, 0.3);
+}
+
+.playmenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.jetons {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 61px;
+  width: 127px;
+  height: 72px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  bottom: 20vh;
+  right: 94vh;
+  font-size: 30px;
+}
+
+.player_card {
+  border: 3px white solid;
+  height: 150px;
+  width: 100px;
+  position: absolute;
+  top: 47vh;
+  right: 95vh;
+}
+
+.croupier_card {
+  border: 3px white solid;
+  height: 150px;
+  width: 100px;
+  position: absolute;
+  top: 11vh;
+  right: 95vh;
+}
