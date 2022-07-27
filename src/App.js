@@ -7,6 +7,7 @@ import _ from "lodash"
 import "./reset.css"
 import "./App.css"
 import PlayerSide from "./components/PlayerSide"
+import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers"
 
 class App extends Component {
   constructor() {
@@ -18,118 +19,256 @@ class App extends Component {
       croupierHand: [],
       resultPlayer: 0,
       resultCroupier: 0,
-      jeton: 100,
-      jetonBet: 0
+      winner: "",
+      whosTurn: "player",
+      gameStatus: "distribution",
     }
   }
-
-  cardDistributionPlayer = () => {
-    const clonedDeck = [...this.state.deck]
-    const cardDeal = clonedDeck.pop()
-
-    const clonePlayerHand = [...this.state.playerHand, cardDeal]
-
-    const result = this.sumOfCards(clonePlayerHand)
-
-    if (result > 21) {
-      const index = clonePlayerHand.findIndex((card) => {
-        return card.value === 11
-      })
-
-      if (index >= 0) {
-        clonePlayerHand[index].value = 1
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.winner !== "") {
+      return
+    }
+    // Distribution
+    if (this.state.gameStatus === "distribution") {
+      if (this.state.playerHand.length > prevState.playerHand.length) {
+        this.calculResultPlayer()
+      }
+      if (this.state.croupierHand.length > prevState.croupierHand.length) {
+        this.calculResultCroupier()
+      }
+      if (_.isEmpty(this.state.cardDeal)) {
+        this.pickUpCard()
       } else {
-        alert("player has lost")
+        if (
+          this.state.playerHand.length < 1 ||
+          this.state.croupierHand.length < 2
+        ) {
+          if (this.state.whosTurn === "player") {
+            this.addToPlayerHandDistribution()
+          } else if (this.state.whosTurn === "croupier") {
+            this.addToCroupierHandDistribution()
+          }
+        } else {
+          this.setState({
+            gameStatus: "hit",
+          })
+        }
       }
     }
+    // Hit
 
-    this.setState({
-      deck: clonedDeck,
-      playerHand: clonePlayerHand,
-      resultPlayer: this.sumOfCards(clonePlayerHand),
-    })
+    if (this.state.gameStatus === "hit") {
+      if (this.state.playerHand.length > prevState.playerHand.length) {
+        this.calculResultPlayer()
+      }
+      if (_.isEmpty(this.state.cardDeal)) {
+        this.pickUpCard()
+      }
+      if (this.state.resultPlayer > 21) {
+        const index = this.state.playerHand.findIndex((card) => {
+          return card.value === 11
+        })
+        if (index >= 0) {
+          const clonePlayerHand = [...this.state.playerHand]
+          let sum = 0
+          clonePlayerHand[index].value = 1
+          clonePlayerHand.forEach((card) => {
+            sum += card.value
+          })
+          this.setState({
+            playerHand: clonePlayerHand,
+            resultPlayer: sum,
+          })
+        } else {
+          this.setState({
+            winner: "croupier",
+          })
+        }
+      }
+    }
+    // STAND
+    if (this.state.gameStatus === "stand") {
+      if (this.state.croupierHand.length > prevState.croupierHand.length) {
+        this.calculResultCroupier()
+      }
+      if (_.isEmpty(this.state.cardDeal)) {
+        this.pickUpCard()
+      } else {
+        if (
+          this.state.resultCroupier < this.state.resultPlayer ||
+          this.state.resultCroupier < 16
+        ) {
+          this.addToCroupierHand()
+        } else if (this.state.resultCroupier > 21) {
+          const index = this.state.croupierHand.findIndex((card) => {
+            return card.value === 11
+          })
+          if (index >= 0) {
+            const cloneCroupierHand = [...this.state.croupierHand]
+            let sum = 0
+            cloneCroupierHand[index].value = 1
+            cloneCroupierHand.forEach((card) => {
+              sum += card.value
+            })
+            this.setState({
+              croupierHand: cloneCroupierHand,
+              resultCroupier: sum,
+            })
+          } else
+            this.setState({
+              winner: "player",
+            })
+        } else if (this.state.resultCroupier === this.state.resultPlayer) {
+          this.setState({
+            winner: "both",
+          })
+        } else {
+          this.setState({
+            winner: "croupier",
+          })
+        }
+      }
+    }
   }
 
-  cardDistributionCroupier = () => {
+  // prend une carte du paquet
+  pickUpCard = () => {
     const clonedDeck = [...this.state.deck]
     const cardDeal = clonedDeck.pop()
-
-    const cloneCroupierHand = [...this.state.croupierHand, cardDeal]
-
-    const result = this.sumOfCards(cloneCroupierHand)
-    if (result > 21) {
-      const index = cloneCroupierHand.findIndex((card) => {
-        return card.value === 11
-      })
-
-      if (index >= 0) {
-        cloneCroupierHand[index].value = 1
-      }
-    }
-
     this.setState({
       deck: clonedDeck,
-      croupierHand: cloneCroupierHand,
-      resultCroupier: this.sumOfCards(cloneCroupierHand),
+      cardDeal: cardDeal,
     })
   }
-
-  croupierHand = () => {
-    this.cardDistribution()
+  addToPlayerHand = () => {
+    const clonePlayerHand = [...this.state.playerHand, this.state.cardDeal]
+    this.setState({
+      playerHand: clonePlayerHand,
+      cardDeal: {},
+    })
+  }
+  addToCroupierHand = () => {
     const clonedCroupierHand = [...this.state.croupierHand, this.state.cardDeal]
     this.setState({
       croupierHand: clonedCroupierHand,
+      cardDeal: {},
     })
   }
-  sumOfCards = (cards) => {
+  addToPlayerHandDistribution = () => {
+    const clonePlayerHand = [...this.state.playerHand, this.state.cardDeal]
+    this.setState({
+      playerHand: clonePlayerHand,
+      cardDeal: {},
+      whosTurn: "croupier",
+    })
+  }
+  addToCroupierHandDistribution = () => {
+    const clonedCroupierHand = [...this.state.croupierHand, this.state.cardDeal]
+    this.setState({
+      croupierHand: clonedCroupierHand,
+      cardDeal: {},
+      whosTurn: "player",
+    })
+  }
+
+  calculResultPlayer = () => {
     let sum = 0
-    cards.forEach((card) => {
+
+    this.state.playerHand.forEach((card) => {
       sum = sum + card.value
     })
-    return sum
+
+    this.setState({
+      resultPlayer: sum,
+    })
   }
-  stand = async () => {
-    if (
-      this.state.resultCroupier < this.state.resultPlayer ||
-      this.state.resultCroupier < 16
-    ) {
-      await this.cardDistributionCroupier()
-      this.stand()
-    } else if (this.state.resultCroupier > 21) {
-      alert("Ia Lost")
+
+  calculResultCroupier = () => {
+    let sum = 0
+
+    this.state.croupierHand.forEach((card) => {
+      sum = sum + card.value
+    })
+
+    this.setState({
+      resultCroupier: sum,
+    })
+  }
+
+  changeAceValueForCroupier = () => {
+    if (this.state.resultCroupier > 21) {
+      const index = this.state.croupierHand.findIndex((card) => {
+        return card.value === 11
+      })
+
+      if (index >= 0) {
+        const cloneCroupierHand = [...this.state.croupierHand]
+        cloneCroupierHand[index].value = 1
+
+        this.setState({
+          croupierHand: cloneCroupierHand,
+        })
+      }
+    }
+  }
+  toCroupierTurn = () => {
+    this.setState({
+      whosTurn: "croupier",
+    })
+  }
+  toPlayerTurn = () => {
+    this.setState({
+      whosTurn: "player",
+    })
+  }
+  whoWin = () => {
+    if (this.state.resultPlayer > this.state.resultCroupier) {
+      this.setState({
+        winner: "player",
+      })
+    } else if (this.state.resultPlayer < this.state.resultCroupier) {
+      this.setState({
+        winner: "croupier",
+      })
     } else {
-      alert("Ia Win")
+      this.setState({
+        winner: "draw",
+      })
     }
   }
 
-  handleJetonPlus = () => {
-    if (this.state.jeton > 0) {
-      this.setState({
-        jeton: this.state.jeton - 10,
-        jetonBet: this.state.jetonBet + 10
-      })
-    } else {
-      alert("You haven't jetons")
-    }
-  }
+
+  // handleJetonPlus = () => {
+  //   if (this.state.jeton > 0) {
+  //     this.setState({
+  //       jeton: this.state.jeton - 10,
+  //       jetonBet: this.state.jetonBet + 10
+  //     })
+  //   } else {
+  //     alert("You haven't jetons")
+  //   }
+  // }
   
-  handleJetonMinus = () => {
-    if (this.state.jetonBet > 0) {
-      this.setState({
-        jetonBet: this.state.jetonBet - 10,
-        jeton: this.state.jeton + 10
-      })
-    } else {
-      alert("No more jetons")
-    }
+  // handleJetonMinus = () => {
+  //   if (this.state.jetonBet > 0) {
+  //     this.setState({
+  //       jetonBet: this.state.jetonBet - 10,
+  //       jeton: this.state.jeton + 10
+  //     })
+  //   } else {
+  //     alert("No more jetons")
+  //   }
+  // }
+
+
+  stand = () => {
+    this.setState({
+      gameStatus: "stand",
+    })
   }
 
-  
-  startTurn = async () => {
-    await this.cardDistributionPlayer()
-    await this.cardDistributionPlayer()
-    await this.cardDistributionCroupier()
-    await this.cardDistributionCroupier()
+  startTurn = () => {
+    this.pickUpCard()
   }
   render() {
     console.log(this.state)
@@ -154,7 +293,7 @@ class App extends Component {
           </div>
 
           <div className="playmenu" style={{display: 'flex'}}>
-            <button onClick={this.cardDistributionPlayer} className="menubutton">Hit</button>
+            <button onClick={this.addToPlayerHand} className="menubutton">Hit</button>
             <button onClick={this.startTurn} className="menubutton">Restart</button>
             <button onClick={this.stand} className="menubutton">Stand</button>
           </div>
