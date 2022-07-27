@@ -28,6 +28,11 @@ class App extends Component {
     if (this.state.winner !== "") {
       return
     }
+    if (this.state.deck.length === 0) {
+      this.setState({
+        deck: _.shuffle([...deckCardsData]),
+      })
+    }
     // Distribution
     if (this.state.gameStatus === "distribution") {
       if (this.state.playerHand.length > prevState.playerHand.length) {
@@ -281,7 +286,8 @@ class App extends Component {
       croupierHand: [],
       resultPlayer: 0,
       resultCroupier: 0,
-
+      winner: "",
+      gameStatus: ""
     })
 
   }
@@ -304,6 +310,7 @@ class App extends Component {
           play={this.startTurn}
           status={this.state.gameStatus}
           winner={this.state.winner}
+          reset={this.resetFunction}
         />
       </main>
     )

@@ -15,7 +15,7 @@ class Buttons extends Component {
             { this.props.status === "hit" && this.props.winner === "" && <button onClick={this.props.stand} className="menubutton">
               Stand
             </button> }
-            { this.props.winner !== "" && <button onClick={this.props.play} className="menubutton">
+            { this.props.winner !== "" && <button onClick={this.props.reset} className="menubutton">
               Restart
             </button> }
           </div>
