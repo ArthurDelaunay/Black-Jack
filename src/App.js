@@ -93,6 +93,7 @@ class App extends Component {
         } else {
           this.setState({
             winner: "croupier",
+            gameStatus: "lost",
           })
         }
       }
@@ -128,18 +129,47 @@ class App extends Component {
           } else
             this.setState({
               winner: "player",
+              gameStatus: "win"
             })
         } else if (this.state.resultCroupier === this.state.resultPlayer) {
           this.setState({
             winner: "both",
+            gameStatus: "draw"
           })
         } else {
           this.setState({
             winner: "croupier",
+            gameStatus: "lost"
           })
         }
       }
     }
+
+    // LOST 
+
+    if (this.state.gameStatus === "lost") {
+      this.setState({
+        tokensBet: 0,
+        gameStatus: "bet"
+      })
+    }
+
+    if (this.state.gameStatus === "draw") {
+      this.setState({
+        tokens: this.state.tokens + this.state.tokensBet,
+        tokensBet: 0,
+        gameStatus: "bet"
+      })
+    }
+
+    if (this.state.gameStatus === "win") {
+      this.setState({
+        tokens: this.state.tokens + this.state.tokensBet + this.state.tokensBet,
+        tokensBet: 0,
+        gameStatus: "bet"
+      })
+    }
+    
   }
 
   // prend une carte du paquet
@@ -209,6 +239,7 @@ class App extends Component {
   startDistribution = () => {
     if (this.state.tokensBet > 0) {
       this.setState({
+        tokens: this.state.tokens - this.state.tokensBet,
         gameStatus: "distribution"
       })
     } else {
