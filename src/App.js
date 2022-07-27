@@ -1,13 +1,10 @@
 import React, { Component } from "react"
-// import DeckCards from "./components/DeckCards"
 import deckCardsData from "./deckCards.json"
 import CroupierSide from "./components/CroupierSide"
-
+import PlayerSide from "./components/PlayerSide"
 import _ from "lodash"
 import "./reset.css"
 import "./App.css"
-import PlayerSide from "./components/PlayerSide"
-import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers"
 
 class App extends Component {
   constructor() {
@@ -16,14 +13,27 @@ class App extends Component {
       deck: _.shuffle([...deckCardsData]),
       cardDeal: {},
       playerHand: [],
-      croupierHand: [],
+      croupierHand: [
+        {
+          cardName: "four",
+          color: "diamond",
+          value: 4,
+          imageUrl: "./assets/img/diamond_4.png",
+        },
+        {
+          cardName: "four",
+          color: "diamond",
+          value: 4,
+          imageUrl: "./assets/img/diamond_4.png",
+        },
+      ],
       resultPlayer: 0,
       resultCroupier: 0,
       winner: "",
       whosTurn: "player",
       gameStatus: "distribution",
       jeton: 100,
-      jetonBet: 0
+      jetonBet: 0,
     }
   }
   componentDidUpdate(prevProps, prevState) {
@@ -239,7 +249,6 @@ class App extends Component {
     }
   }
 
-
   // handleJetonPlus = () => {
   //   if (this.state.jeton > 0) {
   //     this.setState({
@@ -250,7 +259,7 @@ class App extends Component {
   //     alert("You haven't jetons")
   //   }
   // }
-  
+
   // handleJetonMinus = () => {
   //   if (this.state.jetonBet > 0) {
   //     this.setState({
@@ -262,7 +271,6 @@ class App extends Component {
   //   }
   // }
 
-
   stand = () => {
     this.setState({
       gameStatus: "stand",
@@ -273,50 +281,13 @@ class App extends Component {
     this.pickUpCard()
   }
   render() {
-    console.log(this.state)
     return (
-      <main>
-
-
-        <div className="croupier_card"></div>
-
-        <div className="player_card"></div>
-
-        <div className="jetons">
-            {this.state.jeton}
-        </div>
-
-        <div className="downmenu">
-
-          <div className="betmenu" style={{display: 'none'}}>
-            <button onClick={this.handleJetonMinus} className="menubutton">-10</button>
-            <button onClick={this.startTurn} className="menubutton">Play</button>
-            <button onClick={this.handleJetonPlus} className="menubutton">+10</button>
-          </div>
-
-          <div className="playmenu" style={{display: 'flex'}}>
-            <button onClick={this.addToPlayerHand} className="menubutton">Hit</button>
-            <button onClick={this.startTurn} className="menubutton">Play</button>
-            <button onClick={this.stand} className="menubutton">Stand</button>
-          </div>
-          
-        </div>
-
-        <span>You bet {this.state.jetonBet}</span>
-        {/* <button onClick={this.sumOfCardsPlayer}>Teste</button> */}
-
-        {/* <ul>
-          {this.state.deck.map((card) => {
-            return (
-              <li key={`${card}${card.color}`}>
-                <DeckCards card={card} />
-              </li>
-            );
-          })}
-        </ul> */}
-        {/* {this.state.deck.map((card) => {
-          return <img src={card.imageUrl} alt="" width={70} height={100} />
-        })} */}
+      <main className="flex flex-column">
+        <CroupierSide
+          hand={this.state.croupierHand}
+          score={this.state.resultCroupier}
+        />
+        <PlayerSide />
       </main>
     )
   }

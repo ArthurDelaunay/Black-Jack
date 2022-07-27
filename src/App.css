@@ -6,15 +6,14 @@ main {
   width: 100%;
 }
 
-
 .downmenu {
   background: url(../public/background/downmenu.png) no-repeat;
   width: 756px;
   height: 135px;
   display: flex;
-  position: absolute;
+  /* position: absolute;
   right: 50vh;
-  bottom: 0vh;
+  bottom: 0vh; */
   display: flex;
   justify-content: space-between;
 }
@@ -52,9 +51,9 @@ main {
   align-items: center;
   justify-content: center;
   display: flex;
-  position: absolute;
+  /* position: absolute;
   bottom: 20vh;
-  right: 94vh;
+  right: 94vh; */
   font-size: 30px;
 }
 
@@ -62,16 +61,61 @@ main {
   border: 3px white solid;
   height: 150px;
   width: 100px;
-  position: absolute;
+  /* position: absolute;
   top: 47vh;
-  right: 95vh;
+  right: 95vh; */
 }
 
 .croupier_card {
   border: 3px white solid;
   height: 150px;
-  width: 100px;
-  position: absolute;
+  width: fit-content;
+  /* position: absolute;
   top: 11vh;
-  right: 95vh;
+  right: 95vh; */
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.height_50p100 {
+  height: 50%;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.padding-left {
+  padding-left: 30%;
+}
+
+.score-render {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 61px;
+  width: 75px;
+  height: 75px;
+  font-size: 30px;
+}
+
+.padding-x-20p100 {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.gap-2 {
+  gap: 2px;
 }
