@@ -49,9 +49,6 @@ main {
   align-items: center;
   justify-content: center;
   display: flex;
-  /* position: absolute;
-  bottom: 20vh;
-  right: 94vh; */
   font-size: 30px;
 }
 
@@ -59,18 +56,12 @@ main {
   border: 3px white solid;
   height: 150px;
   width: 100px;
-  /* position: absolute;
-  top: 47vh;
-  right: 95vh; */
 }
 
 .croupier_card {
   border: 3px white solid;
   height: 150px;
   width: fit-content;
-  /* position: absolute;
-  top: 11vh;
-  right: 95vh; */
 }
 
 .flex {
@@ -119,4 +110,20 @@ main {
 
 .gap-2 {
   gap: 2px;
+}
+
+
+.tokens {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 61px;
+  height: 70px;
+  width: 300px;
+  color: white;
+  font-size: 30px;
+  border: none;
+}
+
+.gap-40 {
+  gap: 40px;
 }
