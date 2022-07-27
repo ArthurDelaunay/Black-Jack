@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import deckCardsData from "./deckCards.json"
 import CroupierSide from "./components/CroupierSide"
 import PlayerSide from "./components/PlayerSide"
+import Buttons from "./components/Buttons"
 import _ from "lodash"
 import "./reset.css"
 import "./App.css"
@@ -12,8 +13,7 @@ class App extends Component {
     this.state = {
       deck: _.shuffle([...deckCardsData]),
       cardDeal: {},
-      playerHand: [],
-      croupierHand: [
+      playerHand: [
         {
           cardName: "four",
           color: "diamond",
@@ -27,6 +27,7 @@ class App extends Component {
           imageUrl: "./assets/img/diamond_4.png",
         },
       ],
+      croupierHand: [],
       resultPlayer: 0,
       resultCroupier: 0,
       winner: "",
@@ -287,7 +288,11 @@ class App extends Component {
           hand={this.state.croupierHand}
           score={this.state.resultCroupier}
         />
-        <PlayerSide />
+        <PlayerSide
+          hand={this.state.playerHand}
+          score={this.state.resultPlayer}
+        />
+        <Buttons />
       </main>
     )
   }

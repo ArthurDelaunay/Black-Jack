@@ -1,28 +1,20 @@
 import React, { Component } from "react"
+import Card from "./Card"
 
 class PlayerSide extends Component {
   render() {
     return (
-      <section className="height_50p100">
-        {/* <span>You bet</span> */}
-        <div className="player_card"></div>
-
-        <div className="jetons"></div>
-
-        <div className="downmenu">
-          <div className="betmenu" style={{ display: "none" }}>
-            <button onClick={this.handleJetonMinus} className="menubutton">
-              -10
-            </button>
-            <button className="menubutton">Play</button>
-            <button className="menubutton">+10</button>
-          </div>
-          <div className="playmenu" style={{ display: "flex" }}>
-            <button className="menubutton">Hit</button>
-            <button className="menubutton">Play</button>
-            <button className="menubutton">Stand</button>
-          </div>
+      <section className="height_50p100 flex align-items-center justify-content-between padding-x-20p100">
+        <div className="flex gap-2">
+          {this.props.hand.map((card) => {
+            return (
+              <Card key={`${card.cardName}${card.value}`} img={card.imageUrl} />
+            )
+          })}
         </div>
+        <p className="score-render flex justify-content-center align-items-center">
+          {this.props.score}
+        </p>
       </section>
     )
   }
