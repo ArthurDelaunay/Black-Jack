@@ -19,7 +19,7 @@ class App extends Component {
       resultCroupier: 0,
       winner: "",
       whosTurn: "player",
-      gameStatus: "distribution",
+      gameStatus: "",
       jeton: 100,
       jetonBet: 0,
     }
@@ -266,7 +266,13 @@ class App extends Component {
   }
 
   startTurn = () => {
-    this.pickUpCard()
+    this.handleGameStatus()
+  }
+
+  handleGameStatus = () => {
+    this.setState({
+      gameStatus: "distribution"
+    })
   }
 
   render() {
@@ -285,6 +291,8 @@ class App extends Component {
           stand={this.stand}
           hit={this.addToPlayerHand}
           play={this.startTurn}
+          status={this.state.gameStatus}
+          winner={this.state.winner}
         />
       </main>
     )
