@@ -303,6 +303,7 @@ class App extends Component {
         <CroupierSide
           hand={this.state.croupierHand}
           score={this.state.resultCroupier}
+          gameStatus={this.state.gameStatus}
         />
         <PlayerSide
           hand={this.state.playerHand}
