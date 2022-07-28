@@ -350,7 +350,7 @@ class App extends Component {
             )}
             {this.state.winner === "croupier" && this.state.tokens === 0 && (
               <img
-                src="https://imgur.com/a/j3ObvIF"
+                src="https://c.tenor.com/G29shFrorHgAAAAi/spoopy-spooky.gif"
                 alt="game over"
                 width={400}
               />
