@@ -36,7 +36,6 @@ class App extends Component {
     // Bet
     if (this.state.gameStatus === "bet") {
       if (this.state.tokensBet > 0) {
-        
       }
     }
     // Distribution
@@ -129,28 +128,28 @@ class App extends Component {
           } else
             this.setState({
               winner: "player",
-              gameStatus: "win"
+              gameStatus: "win",
             })
         } else if (this.state.resultCroupier === this.state.resultPlayer) {
           this.setState({
             winner: "both",
-            gameStatus: "draw"
+            gameStatus: "draw",
           })
         } else {
           this.setState({
             winner: "croupier",
-            gameStatus: "lost"
+            gameStatus: "lost",
           })
         }
       }
     }
 
-    // LOST 
+    // LOST
 
     if (this.state.gameStatus === "lost") {
       this.setState({
         tokensBet: 0,
-        gameStatus: "bet"
+        gameStatus: "bet",
       })
     }
 
@@ -158,7 +157,7 @@ class App extends Component {
       this.setState({
         tokens: this.state.tokens + this.state.tokensBet,
         tokensBet: 0,
-        gameStatus: "bet"
+        gameStatus: "bet",
       })
     }
 
@@ -166,10 +165,9 @@ class App extends Component {
       this.setState({
         tokens: this.state.tokens + this.state.tokensBet + this.state.tokensBet,
         tokensBet: 0,
-        gameStatus: "bet"
+        gameStatus: "bet",
       })
     }
-    
   }
 
   // prend une carte du paquet
@@ -240,18 +238,17 @@ class App extends Component {
     if (this.state.tokensBet > 0) {
       this.setState({
         tokens: this.state.tokens - this.state.tokensBet,
-        gameStatus: "distribution"
+        gameStatus: "distribution",
       })
     } else {
-      alert('Bet some tokens PLEASE')
+      alert("Bet some tokens PLEASE")
     }
   }
 
-  
   handleTokenPlus = () => {
     if (this.state.tokens >= 10 && this.state.tokens > this.state.tokensBet) {
       this.setState({
-        tokensBet: this.state.tokensBet + 10
+        tokensBet: this.state.tokensBet + 10,
       })
     }
   }
@@ -259,7 +256,7 @@ class App extends Component {
   handleTokenMinus = () => {
     if (this.state.tokensBet >= 10) {
       this.setState({
-        tokensBet: this.state.tokensBet - 10
+        tokensBet: this.state.tokensBet - 10,
       })
     }
   }
@@ -276,12 +273,11 @@ class App extends Component {
 
   handleGameStatus = () => {
     this.setState({
-      gameStatus: "bet"
+      gameStatus: "bet",
     })
   }
 
-
-  resetFunction = () =>{
+  resetFunction = () => {
     this.setState({
       cardDeal: {},
       playerHand: [],
@@ -289,17 +285,17 @@ class App extends Component {
       resultPlayer: 0,
       resultCroupier: 0,
       winner: "",
-      gameStatus: ""
+      gameStatus: "",
     })
-
   }
- 
+
   render() {
     return (
       <main className="flex flex-column">
         <CroupierSide
           hand={this.state.croupierHand}
           score={this.state.resultCroupier}
+          gameStatus={this.state.gameStatus}
         />
         <PlayerSide
           hand={this.state.playerHand}
