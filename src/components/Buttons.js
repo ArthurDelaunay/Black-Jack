@@ -24,7 +24,7 @@ class Buttons extends Component {
                 Play
               </button>
             )}
-            {this.props.winner !== "" && (
+            {this.props.winner !== "" && this.props.tokens !== 0 && (
               <button onClick={this.props.replay} className="menubutton">
                 Replay
               </button>
@@ -44,7 +44,7 @@ class Buttons extends Component {
                 +10
               </button>
             )}
-            {this.props.winner === "gameDone" && (
+            {this.props.winner === "croupier" && this.props.tokens === 0 && (
               <button onClick={this.props.reset} className="menubutton">
                 Restart
               </button>

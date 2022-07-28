@@ -8,7 +8,7 @@ class PlayerSide extends Component {
         <div className="flex gap-2">
           {this.props.hand.map((card) => {
             return (
-              <Card key={`${card.cardName}${card.value}`} img={card.imageUrl} />
+              <Card key={`${card.color}${card.value}`} img={card.imageUrl} />
             )
           })}
         </div>
