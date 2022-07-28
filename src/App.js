@@ -91,7 +91,6 @@ class App extends Component {
           })
         } else {
           this.setState({
-            winner: "croupier",
             gameStatus: "lost",
           })
         }
@@ -127,45 +126,45 @@ class App extends Component {
             })
           } else
             this.setState({
-              winner: "player",
               gameStatus: "win",
             })
         } else if (this.state.resultCroupier === this.state.resultPlayer) {
           this.setState({
-            winner: "both",
             gameStatus: "draw",
           })
         } else {
           this.setState({
-            winner: "croupier",
             gameStatus: "lost",
           })
         }
       }
     }
 
-    // LOST
+    // Lost
 
     if (this.state.gameStatus === "lost") {
       this.setState({
         tokensBet: 0,
-        gameStatus: "bet",
+        gameStatus: "",
+        winner: "croupier",
       })
     }
-
+    // draw
     if (this.state.gameStatus === "draw") {
       this.setState({
         tokens: this.state.tokens + this.state.tokensBet,
         tokensBet: 0,
-        gameStatus: "bet",
+        gameStatus: "",
+        winner: "both",
       })
     }
-
+    // win
     if (this.state.gameStatus === "win") {
       this.setState({
         tokens: this.state.tokens + this.state.tokensBet + this.state.tokensBet,
         tokensBet: 0,
-        gameStatus: "bet",
+        gameStatus: "",
+        winner: "player",
       })
     }
   }
@@ -276,6 +275,15 @@ class App extends Component {
       gameStatus: "bet",
     })
   }
+  replay = () => {
+    this.setState({
+      playerHand: [],
+      croupierHand: [],
+      resultCroupier: 0,
+      resultPlayer: 0,
+      winner: "",
+    })
+  }
 
   resetFunction = () => {
     this.setState({
@@ -314,7 +322,31 @@ class App extends Component {
           plusTen={this.handleTokenPlus}
           minusTen={this.handleTokenMinus}
           checkBet={this.startDistribution}
+          replay={this.replay}
         />
+        {this.state.winner !== "" && (
+          <section className="render-player-status flex justify-content-center align-items-center">
+            {this.state.winner === "player" && (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1021/1021220.png"
+                alt="win cup"
+              />
+            )}
+            {this.state.winner === "croupier" && (
+              <img
+                src="https://c.tenor.com/XpZ1nVvr6DsAAAAM/diary-of-a-wimpy-kid-loser.gif"
+                alt="loser little girl"
+                width={400}
+              />
+            )}
+            {this.state.winner === "both" && (
+              <img
+                src="https://c.tenor.com/bQAJd4X4MN8AAAAC/its-the-exact-same-thing-ian-carter.gif"
+                alt="draw"
+              />
+            )}
+          </section>
+        )}
       </main>
     )
   }
