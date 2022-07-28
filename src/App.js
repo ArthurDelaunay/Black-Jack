@@ -240,7 +240,7 @@ class App extends Component {
         gameStatus: "distribution",
       })
     } else {
-      alert("Bet some tokens PLEASE")
+      alert("Bet some tokens please")
     }
   }
 
@@ -294,6 +294,9 @@ class App extends Component {
       resultCroupier: 0,
       winner: "",
       gameStatus: "",
+      tokens: 100,
+      tokensBet: 0,
+      deck: _.shuffle([...deckCardsData]),
     })
   }
 
@@ -332,7 +335,7 @@ class App extends Component {
                 alt="win cup"
               />
             )}
-            {this.state.winner === "croupier" && (
+            {this.state.winner === "croupier" && this.state.tokens > 0 && (
               <img
                 src="https://c.tenor.com/XpZ1nVvr6DsAAAAM/diary-of-a-wimpy-kid-loser.gif"
                 alt="loser little girl"
@@ -343,6 +346,13 @@ class App extends Component {
               <img
                 src="https://c.tenor.com/bQAJd4X4MN8AAAAC/its-the-exact-same-thing-ian-carter.gif"
                 alt="draw"
+              />
+            )}
+            {this.state.winner === "croupier" && this.state.tokens === 0 && (
+              <img
+                src="https://c.tenor.com/G29shFrorHgAAAAi/spoopy-spooky.gif"
+                alt="game over"
+                width={400}
               />
             )}
           </section>
